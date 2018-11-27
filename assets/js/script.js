@@ -92,17 +92,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
     download_pdf_btn.addEventListener("click", function(e){
 
-        e.preventDefault();        
+        e.preventDefault();
+        const certX =  $('#cert-x').val();
+        const certY =  $('#cert-y').val();
+        const textX =  $('#text-x').val();       
+        const textY =  $('#text-y').val();
+        const textSize =  $('#text-size').val();
+        const imageX =  $('#image-x').val();
+        const imageY =  $('#image-y').val();
+        const imageSizeX =  $('#image-size-x').val();
+        const imageSizeY =  $('#image-size-y').val();
         var doc = new jsPDF({
           orientation: 'landscape',
           unit: 'mm',
-          format: [297, 210]
+          format: [certX, certY]
         });
+        // format: [297, 210]
         doc.setFontSize(20);
-        var nameText = $('#candidate-name').val();
-        console.log("name text : " + nameText);
+        // doc.setFontSize(textSize);
+        var nameText = $('#candidate-name').val();        
         doc.text(90,80,nameText);
+        // doc.text(textX,textY,nameText);
         doc.addImage(image, 'PNG',  200, 100, 50, 50 );
+        // doc.addImage(image, 'PNG',  imageX, imageY, imageSizeX, imageSizeY );
+        
+        doc.autoPrint();
+        // window.open(doc.output('bloburl'), '_blank');
+        // doc.output('dataurlnewwindow');
         doc.save("cert.pdf");
 
     });
