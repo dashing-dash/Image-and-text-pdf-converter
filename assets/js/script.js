@@ -93,29 +93,31 @@ document.addEventListener('DOMContentLoaded', function () {
     download_pdf_btn.addEventListener("click", function(e){
 
         e.preventDefault();
-        const certX =  $('#cert-x').val();
-        const certY =  $('#cert-y').val();
-        const textX =  $('#text-x').val();       
-        const textY =  $('#text-y').val();
-        const textSize =  $('#text-size').val();
-        const imageX =  $('#image-x').val();
-        const imageY =  $('#image-y').val();
-        const imageSizeX =  $('#image-size-x').val();
-        const imageSizeY =  $('#image-size-y').val();
+        var certX =  Number($('#cert-x').val());
+        var certY =  Number($('#cert-y').val());
+        var textX =  Number($('#text-x').val());       
+        var textY =  Number($('#text-y').val());
+        var textSize =  Number($('#text-size').val());
+        var imageX =  Number($('#image-x').val());
+        var imageY =  Number($('#image-y').val());
+        var imageSizeX =  Number($('#image-size-x').val());
+        var imageSizeY =  Number($('#image-size-y').val());
         var doc = new jsPDF({
           orientation: 'landscape',
           unit: 'mm',
           format: [certX, certY]
         });
         // format: [297, 210]
-        doc.setFontSize(20);
-        // doc.setFontSize(textSize);
+        // doc.setFontSize(20);
+        doc.setFontSize(textSize);
         var nameText = $('#candidate-name').val();        
         doc.text(90,80,nameText);
         // doc.text(textX,textY,nameText);
         doc.addImage(image, 'PNG',  200, 100, 50, 50 );
         // doc.addImage(image, 'PNG',  imageX, imageY, imageSizeX, imageSizeY );
         
+        console.log(nameText + " "  +certX + " " + certY + " " +textX + " " +textY + " " +textSize + " " +imageX + " " +imageY + " " +imageSizeX + " " +imageSizeY);
+
         doc.autoPrint();
         // window.open(doc.output('bloburl'), '_blank');
         // doc.output('dataurlnewwindow');
