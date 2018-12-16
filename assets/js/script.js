@@ -110,11 +110,14 @@ document.addEventListener('DOMContentLoaded', function () {
         // format: [297, 210]
         // doc.setFontSize(20);
         doc.setFontSize(textSize);
+        // doc.addFont("baskerville", "normal");
+        // doc.setFont("Garamond");
+        doc.setFontType("bold");
         var nameText = $('#candidate-name').val();        
-        doc.text(90,80,nameText);
-        // doc.text(textX,textY,nameText);
-        doc.addImage(image, 'PNG',  200, 100, 50, 50 );
-        // doc.addImage(image, 'PNG',  imageX, imageY, imageSizeX, imageSizeY );
+        // doc.text(90,80,nameText);
+        doc.text(textX,textY,nameText);
+        // doc.addImage(image, 'PNG',  200, 100, 20, 20 );
+        doc.addImage(image, 'PNG',  imageX, imageY, imageSizeX, imageSizeY );
         
         console.log(nameText + " "  +certX + " " + certY + " " +textX + " " +textY + " " +textSize + " " +imageX + " " +imageY + " " +imageSizeX + " " +imageSizeY);
 
